@@ -1,0 +1,132 @@
+[gd_scene format=4 uid="uid://b2im1kbltrake"]
+
+[ext_resource type="Script" uid="uid://dmqhliaif83fj" path="res://scripts/bg.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://c1xdw4dn2b2tj" path="res://art/Backgrounds/darkPurple.png" id="1_o5qli"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
+texture = ExtResource("1_o5qli")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sugp2"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_0wfyh")
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("space1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-17, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("space2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-17, -1279)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("space1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-17, 2), Vector2(-21, 1280)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("space2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-17, -1279), Vector2(-27, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tefeu"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"loop": SubResource("Animation_tbgi4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6xl0"]
+size = Vector2(16, 1284.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(16, 1284.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(743, 11)
+
+[node name="main" type="Node2D" unique_id=544098909]
+
+[node name="bg" type="Node2D" parent="." unique_id=1311212233]
+script = ExtResource("1_0wfyh")
+
+[node name="space1" type="Node2D" parent="bg" unique_id=805214982]
+position = Vector2(-17, 2)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="bg/space1" unique_id=1917762636]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sugp2")
+
+[node name="space2" type="Node2D" parent="bg" unique_id=644762732]
+position = Vector2(-17, -1279)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="bg/space2" unique_id=510970467]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_sugp2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bg" unique_id=997801572]
+libraries/ = SubResource("AnimationLibrary_tefeu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="bg" unique_id=1720125096]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/StaticBody2D" unique_id=792783809]
+position = Vector2(-1, 637.9375)
+shape = SubResource("RectangleShape2D_o6xl0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bg/StaticBody2D" unique_id=723550795]
+position = Vector2(724, 640.375)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="bg/StaticBody2D" unique_id=1423494066]
+position = Vector2(364, 1)
+shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="bg/StaticBody2D" unique_id=1586959448]
+position = Vector2(354, 1280)
+shape = SubResource("RectangleShape2D_85g3d")
+
+[node name="ui" type="Node2D" parent="." unique_id=1435334453]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ui" unique_id=1038315712]
+
+[node name="startScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1319774002]
+
+[node name="startScreen2" type="Node2D" parent="ui/CanvasLayer" unique_id=1640271270]
