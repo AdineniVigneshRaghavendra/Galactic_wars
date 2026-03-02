@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dmqhliaif83fj" path="res://scripts/bg.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://c1xdw4dn2b2tj" path="res://art/Backgrounds/darkPurple.png" id="1_o5qli"]
 [ext_resource type="FontFile" uid="uid://dk6ej1wskjlgr" path="res://art/Bonus/kenvector_future.ttf" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://dotqggfkrjc3q" path="res://scripts/ui.gd" id="3_tipki"]
 [ext_resource type="Texture2D" uid="uid://dx8yw1si7w1n3" path="res://art/PNG/playerShip2_blue.png" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://ce0wn8g5k5ju1" path="res://kenney_ui-pack/PNG/Blue/Default/button_rectangle_border.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://0r7gbqoak033" path="res://art/PNG/playerShip1_blue.png" id="6_o6xl0"]
@@ -103,6 +104,18 @@ font_color = Color(0, 0, 0, 1)
 font_size = 55
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
+font = ExtResource("3_jyhfs")
+font_size = 75
+outline_size = 20
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_choun"]
+font = ExtResource("3_jyhfs")
+font_size = 35
+outline_size = 13
+outline_color = Color(1, 0, 0, 1)
+
 [node name="main" type="Node2D" unique_id=544098909]
 
 [node name="bg" type="Node2D" parent="." unique_id=1311212233]
@@ -148,11 +161,11 @@ position = Vector2(354, 1280)
 shape = SubResource("RectangleShape2D_85g3d")
 
 [node name="ui" type="Node2D" parent="." unique_id=1435334453]
+script = ExtResource("3_tipki")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ui" unique_id=1038315712]
 
 [node name="startScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1319774002]
-visible = false
 
 [node name="Label" type="Label" parent="ui/CanvasLayer/startScreen" unique_id=1086419995]
 offset_right = 721.0
@@ -305,7 +318,7 @@ offset_left = 217.0
 offset_top = 816.0
 offset_right = 351.0
 offset_bottom = 900.0
-text = "alps"
+text = "zoro"
 label_settings = SubResource("LabelSettings_o6xl0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -336,7 +349,7 @@ offset_left = 218.0
 offset_top = 815.0
 offset_right = 351.0
 offset_bottom = 899.0
-text = "levi"
+text = "loki"
 label_settings = SubResource("LabelSettings_o6xl0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -349,6 +362,7 @@ offset_bottom = 905.0
 theme_type_variation = &"FlatButton"
 
 [node name="inGameScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1463203227]
+visible = false
 
 [node name="ButtonMute" type="Node2D" parent="ui/CanvasLayer/inGameScreen" unique_id=1256524426]
 position = Vector2(-244, -816)
@@ -395,4 +409,71 @@ offset_right = 316.0
 offset_bottom = 898.0
 theme_type_variation = &"FlatButton"
 
+[node name="LabelScore" type="Label" parent="ui/CanvasLayer/inGameScreen" unique_id=1406212617]
+offset_right = 721.0
+offset_bottom = 85.0
+text = "0"
+label_settings = SubResource("LabelSettings_tefeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="gameOverScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=78525642]
+visible = false
+
+[node name="LabelGameOver" type="Label" parent="ui/CanvasLayer/gameOverScreen" unique_id=990531965]
+offset_right = 728.0
+offset_bottom = 545.0
+text = "Game Over !"
+label_settings = SubResource("LabelSettings_85g3d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LabelScore" type="Label" parent="ui/CanvasLayer/gameOverScreen" unique_id=2117137387]
+offset_top = 154.0
+offset_right = 719.0
+offset_bottom = 545.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_choun")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonMenu" type="Node2D" parent="ui/CanvasLayer/gameOverScreen" unique_id=1062688016]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/gameOverScreen/ButtonMenu" unique_id=1807706508]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 906.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/gameOverScreen/ButtonMenu" unique_id=667952082]
+offset_left = 217.0
+offset_top = 816.0
+offset_right = 483.0
+offset_bottom = 900.0
+text = "menu"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMenu" type="Button" parent="ui/CanvasLayer/gameOverScreen/ButtonMenu" unique_id=2121884030]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 905.0
+theme_type_variation = &"FlatButton"
+
+[connection signal="pressed" from="ui/CanvasLayer/startScreen/ButtonPlay/ButtonPlay" to="ui" method="_on_button_play_pressed"]
+[connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonChoose/ButtonChoose" to="ui" method="_on_button_choose_pressed"]
+[connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonShipOne/ButtonShipOne" to="ui" method="_on_button_ship_one_pressed"]
+[connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonShipTwo/ButtonShipTwo" to="ui" method="_on_button_ship_two_pressed"]
+[connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonShipThree/ButtonShipThree" to="ui" method="_on_button_ship_three_pressed"]
+[connection signal="pressed" from="ui/CanvasLayer/inGameScreen/ButtonMute/ButtonMute" to="ui" method="_on_button_mute_pressed"]
+[connection signal="pressed" from="ui/CanvasLayer/gameOverScreen/ButtonMenu/ButtonMenu" to="ui" method="_on_button_menu_pressed"]
