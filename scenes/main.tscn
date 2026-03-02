@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dmqhliaif83fj" path="res://scripts/bg.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://c1xdw4dn2b2tj" path="res://art/Backgrounds/darkPurple.png" id="1_o5qli"]
+[ext_resource type="FontFile" uid="uid://dk6ej1wskjlgr" path="res://art/Bonus/kenvector_future.ttf" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dx8yw1si7w1n3" path="res://art/PNG/playerShip2_blue.png" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://ce0wn8g5k5ju1" path="res://kenney_ui-pack/PNG/Blue/Default/button_rectangle_border.png" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://0r7gbqoak033" path="res://art/PNG/playerShip1_blue.png" id="6_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://dlamv8ga0s7n0" path="res://art/PNG/playerShip3_blue.png" id="7_tipki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("1_o5qli")
@@ -83,12 +88,29 @@ size = Vector2(16, 1284.125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
 size = Vector2(743, 11)
 
+[sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
+font = ExtResource("3_jyhfs")
+font_size = 75
+outline_size = 20
+outline_color = Color(0.023529412, 0.5411765, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6xl0"]
+font = ExtResource("3_jyhfs")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
+font_size = 55
+font_color = Color(0, 0, 0, 1)
+
 [node name="main" type="Node2D" unique_id=544098909]
 
 [node name="bg" type="Node2D" parent="." unique_id=1311212233]
 script = ExtResource("1_0wfyh")
 
 [node name="space1" type="Node2D" parent="bg" unique_id=805214982]
+modulate = Color(0, 1, 1, 1)
+texture_filter = 1
 position = Vector2(-17, 2)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="bg/space1" unique_id=1917762636]
@@ -96,6 +118,8 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAA
 tile_set = SubResource("TileSet_sugp2")
 
 [node name="space2" type="Node2D" parent="bg" unique_id=644762732]
+modulate = Color(0, 1, 1, 1)
+texture_filter = 1
 position = Vector2(-17, -1279)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="bg/space2" unique_id=510970467]
@@ -128,5 +152,247 @@ shape = SubResource("RectangleShape2D_85g3d")
 [node name="CanvasLayer" type="CanvasLayer" parent="ui" unique_id=1038315712]
 
 [node name="startScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1319774002]
+visible = false
 
-[node name="startScreen2" type="Node2D" parent="ui/CanvasLayer" unique_id=1640271270]
+[node name="Label" type="Label" parent="ui/CanvasLayer/startScreen" unique_id=1086419995]
+offset_right = 721.0
+offset_bottom = 545.0
+text = "Galactic wars"
+label_settings = SubResource("LabelSettings_tefeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ui/CanvasLayer/startScreen" unique_id=898453731]
+texture_filter = 1
+position = Vector2(356, 573)
+scale = Vector2(2, 2)
+texture = ExtResource("4_tbgi4")
+
+[node name="ButtonPlay" type="Node2D" parent="ui/CanvasLayer/startScreen" unique_id=1098772343]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/startScreen/ButtonPlay" unique_id=655852311]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 906.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/startScreen/ButtonPlay" unique_id=1603989835]
+offset_left = 217.0
+offset_top = 816.0
+offset_right = 483.0
+offset_bottom = 900.0
+text = "Play"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPlay" type="Button" parent="ui/CanvasLayer/startScreen/ButtonPlay" unique_id=751818643]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 905.0
+theme_type_variation = &"FlatButton"
+
+[node name="chooseScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1640271270]
+visible = false
+
+[node name="ships" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=1642618996]
+
+[node name="shipOne" type="Sprite2D" parent="ui/CanvasLayer/chooseScreen/ships" unique_id=11265044]
+texture_filter = 1
+position = Vector2(356, 573)
+scale = Vector2(2, 2)
+texture = ExtResource("4_tbgi4")
+
+[node name="shipTwo" type="Sprite2D" parent="ui/CanvasLayer/chooseScreen/ships" unique_id=1583094734]
+visible = false
+texture_filter = 1
+position = Vector2(356, 573)
+scale = Vector2(2, 2)
+texture = ExtResource("6_o6xl0")
+
+[node name="shipThree" type="Sprite2D" parent="ui/CanvasLayer/chooseScreen/ships" unique_id=1414512787]
+visible = false
+texture_filter = 1
+position = Vector2(356, 573)
+scale = Vector2(2, 2)
+texture = ExtResource("7_tipki")
+
+[node name="ButtonChoose" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=466367145]
+position = Vector2(-12, 117)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/chooseScreen/ButtonChoose" unique_id=1346083920]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 906.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/chooseScreen/ButtonChoose" unique_id=1687924412]
+offset_left = 217.0
+offset_top = 816.0
+offset_right = 483.0
+offset_bottom = 900.0
+text = "Choose"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonChoose" type="Button" parent="ui/CanvasLayer/chooseScreen/ButtonChoose" unique_id=425241654]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 905.0
+theme_type_variation = &"FlatButton"
+
+[node name="ButtonShipOne" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=1114047607]
+position = Vector2(-130, -46)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/chooseScreen/ButtonShipOne" unique_id=790287249]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 356.0
+offset_bottom = 906.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/chooseScreen/ButtonShipOne" unique_id=896842205]
+offset_left = 217.0
+offset_top = 816.0
+offset_right = 350.0
+offset_bottom = 900.0
+text = "ace"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonShipOne" type="Button" parent="ui/CanvasLayer/chooseScreen/ButtonShipOne" unique_id=146307723]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 489.0
+offset_bottom = 905.0
+theme_type_variation = &"FlatButton"
+
+[node name="ButtonShipTwo" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=808339601]
+position = Vector2(75, -44)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/chooseScreen/ButtonShipTwo" unique_id=890241065]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 356.0
+offset_bottom = 906.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/chooseScreen/ButtonShipTwo" unique_id=2111726271]
+offset_left = 217.0
+offset_top = 816.0
+offset_right = 351.0
+offset_bottom = 900.0
+text = "alps"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonShipTwo" type="Button" parent="ui/CanvasLayer/chooseScreen/ButtonShipTwo" unique_id=1605543392]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 355.0
+offset_bottom = 905.0
+theme_type_variation = &"FlatButton"
+
+[node name="ButtonShipThree" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=1217936961]
+position = Vector2(271, -45)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/chooseScreen/ButtonShipThree" unique_id=822177310]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 356.0
+offset_bottom = 906.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="ui/CanvasLayer/chooseScreen/ButtonShipThree" unique_id=1171626758]
+offset_left = 218.0
+offset_top = 815.0
+offset_right = 351.0
+offset_bottom = 899.0
+text = "levi"
+label_settings = SubResource("LabelSettings_o6xl0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonShipThree" type="Button" parent="ui/CanvasLayer/chooseScreen/ButtonShipThree" unique_id=84356493]
+offset_left = 212.0
+offset_top = 811.0
+offset_right = 355.0
+offset_bottom = 905.0
+theme_type_variation = &"FlatButton"
+
+[node name="inGameScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1463203227]
+
+[node name="ButtonMute" type="Node2D" parent="ui/CanvasLayer/inGameScreen" unique_id=1256524426]
+position = Vector2(-244, -816)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ui/CanvasLayer/inGameScreen/ButtonMute" unique_id=1990231856]
+modulate = Color(1, 1, 1, 0.30980393)
+offset_left = 252.0
+offset_top = 824.0
+offset_right = 317.0
+offset_bottom = 898.0
+texture = ExtResource("5_tbgi4")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="LabelOn" type="Label" parent="ui/CanvasLayer/inGameScreen/ButtonMute" unique_id=653642309]
+modulate = Color(1, 1, 1, 0.42745098)
+offset_left = 218.0
+offset_top = 815.0
+offset_right = 351.0
+offset_bottom = 899.0
+text = "x"
+label_settings = SubResource("LabelSettings_tipki")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelOff" type="Label" parent="ui/CanvasLayer/inGameScreen/ButtonMute" unique_id=287483508]
+visible = false
+modulate = Color(1, 1, 1, 0.42745098)
+offset_left = 218.0
+offset_top = 815.0
+offset_right = 351.0
+offset_bottom = 899.0
+text = "o"
+label_settings = SubResource("LabelSettings_tipki")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMute" type="Button" parent="ui/CanvasLayer/inGameScreen/ButtonMute" unique_id=962648237]
+offset_left = 252.0
+offset_top = 825.0
+offset_right = 316.0
+offset_bottom = 898.0
+theme_type_variation = &"FlatButton"
+
+[node name="gameOverScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=78525642]
