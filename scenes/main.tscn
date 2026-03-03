@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dx8yw1si7w1n3" path="res://art/PNG/playerShip2_blue.png" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://ce0wn8g5k5ju1" path="res://kenney_ui-pack/PNG/Blue/Default/button_rectangle_border.png" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://0r7gbqoak033" path="res://art/PNG/playerShip1_blue.png" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://b8ib1qglj1aut" path="res://scripts/shipUI.gd" id="7_85g3d"]
 [ext_resource type="Texture2D" uid="uid://dlamv8ga0s7n0" path="res://art/PNG/playerShip3_blue.png" id="7_tipki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
@@ -166,6 +167,7 @@ script = ExtResource("3_tipki")
 [node name="CanvasLayer" type="CanvasLayer" parent="ui" unique_id=1038315712]
 
 [node name="startScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1319774002]
+visible = false
 
 [node name="Label" type="Label" parent="ui/CanvasLayer/startScreen" unique_id=1086419995]
 offset_right = 721.0
@@ -213,7 +215,6 @@ offset_bottom = 905.0
 theme_type_variation = &"FlatButton"
 
 [node name="chooseScreen" type="Node2D" parent="ui/CanvasLayer" unique_id=1640271270]
-visible = false
 
 [node name="ships" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=1642618996]
 
@@ -222,6 +223,13 @@ texture_filter = 1
 position = Vector2(356, 573)
 scale = Vector2(2, 2)
 texture = ExtResource("4_tbgi4")
+script = ExtResource("7_85g3d")
+
+[node name="point" type="Node2D" parent="ui/CanvasLayer/chooseScreen/ships/shipOne" unique_id=867568060]
+position = Vector2(0, -50.5)
+
+[node name="Timer" type="Timer" parent="ui/CanvasLayer/chooseScreen/ships/shipOne" unique_id=1873667962]
+autostart = true
 
 [node name="shipTwo" type="Sprite2D" parent="ui/CanvasLayer/chooseScreen/ships" unique_id=1583094734]
 visible = false
@@ -229,6 +237,13 @@ texture_filter = 1
 position = Vector2(356, 573)
 scale = Vector2(2, 2)
 texture = ExtResource("6_o6xl0")
+script = ExtResource("7_85g3d")
+
+[node name="point" type="Node2D" parent="ui/CanvasLayer/chooseScreen/ships/shipTwo" unique_id=406400566]
+position = Vector2(0, -50.5)
+
+[node name="Timer" type="Timer" parent="ui/CanvasLayer/chooseScreen/ships/shipTwo" unique_id=390831363]
+autostart = true
 
 [node name="shipThree" type="Sprite2D" parent="ui/CanvasLayer/chooseScreen/ships" unique_id=1414512787]
 visible = false
@@ -236,6 +251,13 @@ texture_filter = 1
 position = Vector2(356, 573)
 scale = Vector2(2, 2)
 texture = ExtResource("7_tipki")
+script = ExtResource("7_85g3d")
+
+[node name="point" type="Node2D" parent="ui/CanvasLayer/chooseScreen/ships/shipThree" unique_id=1828917415]
+position = Vector2(0, -50.5)
+
+[node name="Timer" type="Timer" parent="ui/CanvasLayer/chooseScreen/ships/shipThree" unique_id=992505484]
+autostart = true
 
 [node name="ButtonChoose" type="Node2D" parent="ui/CanvasLayer/chooseScreen" unique_id=466367145]
 position = Vector2(-12, 117)
@@ -471,6 +493,9 @@ offset_bottom = 905.0
 theme_type_variation = &"FlatButton"
 
 [connection signal="pressed" from="ui/CanvasLayer/startScreen/ButtonPlay/ButtonPlay" to="ui" method="_on_button_play_pressed"]
+[connection signal="timeout" from="ui/CanvasLayer/chooseScreen/ships/shipOne/Timer" to="ui/CanvasLayer/chooseScreen/ships/shipOne" method="_on_timer_timeout"]
+[connection signal="timeout" from="ui/CanvasLayer/chooseScreen/ships/shipTwo/Timer" to="ui/CanvasLayer/chooseScreen/ships/shipTwo" method="_on_timer_timeout"]
+[connection signal="timeout" from="ui/CanvasLayer/chooseScreen/ships/shipThree/Timer" to="ui/CanvasLayer/chooseScreen/ships/shipThree" method="_on_timer_timeout"]
 [connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonChoose/ButtonChoose" to="ui" method="_on_button_choose_pressed"]
 [connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonShipOne/ButtonShipOne" to="ui" method="_on_button_ship_one_pressed"]
 [connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonShipTwo/ButtonShipTwo" to="ui" method="_on_button_ship_two_pressed"]

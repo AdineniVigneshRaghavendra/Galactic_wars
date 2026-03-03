@@ -1,19 +1,21 @@
-[gd_scene format=3 uid="uid://d3u64xwc16lt3"]
+[gd_scene format=3 uid="uid://d358bcr6g5rj2"]
 
-[ext_resource type="Texture2D" uid="uid://c6n27yk5r88hi" path="res://art/PNG/Lasers/laserBlue05.png" id="1_fh1pe"]
-[ext_resource type="Script" uid="uid://dqg002o73iteo" path="res://scripts/laser.gd" id="1_kihlc"]
+[ext_resource type="Script" uid="uid://dqg002o73iteo" path="res://scripts/laser.gd" id="1_asqem"]
+[ext_resource type="Texture2D" uid="uid://c6n27yk5r88hi" path="res://art/PNG/Lasers/laserBlue05.png" id="1_p5uay"]
+[ext_resource type="PackedScene" uid="uid://d3u64xwc16lt3" path="res://components/laser_one.tscn" id="2_ocflt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fh1pe"]
 radius = 5.0
 height = 38.0
 
-[node name="laserOne" type="CharacterBody2D" unique_id=108344314 groups=["laser"]]
-script = ExtResource("1_kihlc")
-laser = null
+[node name="laserTwo" type="CharacterBody2D" unique_id=108344314 groups=["laser"]]
+script = ExtResource("1_asqem")
+laser_type = 2
+laser = ExtResource("2_ocflt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1157635458]
 texture_filter = 1
-texture = ExtResource("1_fh1pe")
+texture = ExtResource("1_p5uay")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=194406143 groups=["laser"]]
 
