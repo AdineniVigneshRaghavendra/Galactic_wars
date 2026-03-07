@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://binnbh0vcuk7r"]
+[gd_scene format=3 uid="uid://k1pitwsk37yd"]
 
-[ext_resource type="Texture2D" uid="uid://wapl7w5n33xr" path="res://art/PNG/playerShip2_red.png" id="1_ewfbt"]
-[ext_resource type="Script" uid="uid://ce2tqfdcp6kj0" path="res://scripts/enemy.gd" id="1_pxyqx"]
-[ext_resource type="Texture2D" uid="uid://dokcrboiv43sf" path="res://art/PNG/Effects/star3.png" id="2_pxyqx"]
-[ext_resource type="Texture2D" uid="uid://b7o07rlarss1r" path="res://art/PNG/Effects/star2.png" id="3_w3erc"]
-[ext_resource type="AudioStream" uid="uid://c73mq08wj43tw" path="res://art/Bonus/sfx_laser1.ogg" id="4_wurki"]
+[ext_resource type="Script" uid="uid://ce2tqfdcp6kj0" path="res://scripts/enemy.gd" id="1_m0i0m"]
+[ext_resource type="Texture2D" uid="uid://2a4nu8vqttev" path="res://art/PNG/Power-ups/bolt_gold.png" id="2_m0i0m"]
+[ext_resource type="Texture2D" uid="uid://dokcrboiv43sf" path="res://art/PNG/Effects/star3.png" id="3_5cf66"]
+[ext_resource type="Texture2D" uid="uid://b7o07rlarss1r" path="res://art/PNG/Effects/star2.png" id="4_yvfpi"]
+[ext_resource type="AudioStream" uid="uid://c73mq08wj43tw" path="res://art/Bonus/sfx_laser1.ogg" id="5_8g2xd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2mgkv"]
 radius = 34.0147
@@ -33,7 +33,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_pxyqx")]
+"values": [ExtResource("3_5cf66")]
 }
 
 [sub_resource type="Animation" id="Animation_t8rlc"]
@@ -61,7 +61,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_pxyqx"), ExtResource("3_w3erc")]
+"values": [ExtResource("3_5cf66"), ExtResource("4_yvfpi")]
 }
 
 [sub_resource type="Animation" id="Animation_ax5xp"]
@@ -139,14 +139,15 @@ _data = {
 &"idle": SubResource("Animation_4uriv")
 }
 
-[node name="enemy_one" type="CharacterBody2D" unique_id=591703112]
-script = ExtResource("1_pxyqx")
-speed = 300.0
+[node name="powerup" type="CharacterBody2D" unique_id=591703112]
+script = ExtResource("1_m0i0m")
+speed = 400.0
+type = ""
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014400669]
-rotation = 3.1415927
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("1_ewfbt")
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_m0i0m")
 
 [node name="boom" type="Node2D" parent="." unique_id=956947198]
 
@@ -154,9 +155,9 @@ texture = ExtResource("1_ewfbt")
 visible = false
 modulate = Color(1, 0.5372549, 0, 1)
 scale = Vector2(4, 4)
-texture = ExtResource("2_pxyqx")
+texture = ExtResource("3_5cf66")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=368841281 groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=368841281 groups=["powerUp"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=608611449]
 shape = SubResource("CircleShape2D_2mgkv")
@@ -168,7 +169,7 @@ libraries/ = SubResource("AnimationLibrary_u1n41")
 libraries/ = SubResource("AnimationLibrary_37lus")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1785679260]
-stream = ExtResource("4_wurki")
+stream = ExtResource("5_8g2xd")
 
 [node name="Timer" type="Timer" parent="." unique_id=1469554945]
 wait_time = 5.0

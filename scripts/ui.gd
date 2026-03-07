@@ -57,5 +57,5 @@ func _process(delta):
 	if Global.game_over == true:
 		$CanvasLayer/inGameScreen.visible = false
 		$CanvasLayer/gameOverScreen.visible = true
-		$CanvasLayer/inGameScreen/LabelScore.text = str(Global.score)
 		$CanvasLayer/gameOverScreen/LabelScore.text = "Score: " + str(Global.score)
+	$CanvasLayer/inGameScreen/LabelScore.text = str(Global.score)
