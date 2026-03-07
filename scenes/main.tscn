@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d3u64xwc16lt3" path="res://components/laser_one.tscn" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://d358bcr6g5rj2" path="res://components/laser_two.tscn" id="10_trceg"]
 [ext_resource type="PackedScene" uid="uid://ds01c4vn6wupi" path="res://components/laser_three.tscn" id="12_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://uy0wamr1v67f" path="res://components/player.tscn" id="13_trceg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("1_o5qli")
@@ -500,6 +501,10 @@ offset_top = 811.0
 offset_right = 489.0
 offset_bottom = 905.0
 theme_type_variation = &"FlatButton"
+
+[node name="player" parent="." unique_id=115356054 instance=ExtResource("13_trceg")]
+visible = false
+position = Vector2(353, 1046)
 
 [connection signal="pressed" from="ui/CanvasLayer/startScreen/ButtonPlay/ButtonPlay" to="ui" method="_on_button_play_pressed"]
 [connection signal="timeout" from="ui/CanvasLayer/chooseScreen/ships/shipOne/Timer" to="ui/CanvasLayer/chooseScreen/ships/shipOne" method="_on_timer_timeout"]
