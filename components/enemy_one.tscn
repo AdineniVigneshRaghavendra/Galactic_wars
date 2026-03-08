@@ -139,7 +139,7 @@ _data = {
 &"idle": SubResource("Animation_4uriv")
 }
 
-[node name="enemy_one" type="CharacterBody2D" unique_id=591703112]
+[node name="enemy_one" type="CharacterBody2D" unique_id=591703112 groups=["enemy"]]
 script = ExtResource("1_pxyqx")
 speed = 300.0
 

@@ -13,10 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d358bcr6g5rj2" path="res://components/laser_two.tscn" id="10_trceg"]
 [ext_resource type="PackedScene" uid="uid://ds01c4vn6wupi" path="res://components/laser_three.tscn" id="12_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://uy0wamr1v67f" path="res://components/player.tscn" id="13_trceg"]
-[ext_resource type="PackedScene" uid="uid://binnbh0vcuk7r" path="res://components/enemy_one.tscn" id="14_muem4"]
-[ext_resource type="PackedScene" uid="uid://d3xfnkf467p3a" path="res://components/enemy_two.tscn" id="15_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://byq4mcrklue47" path="res://components/meteor.tscn" id="16_0ld40"]
-[ext_resource type="PackedScene" uid="uid://k1pitwsk37yd" path="res://components/powerup.tscn" id="17_gqmmt"]
+[ext_resource type="Script" uid="uid://cxelmkd73waps" path="res://scripts/spawner.gd" id="14_a8y0u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("1_o5qli")
@@ -510,17 +507,18 @@ theme_type_variation = &"FlatButton"
 visible = false
 position = Vector2(353, 1046)
 
-[node name="enemy_one" parent="." unique_id=591703112 instance=ExtResource("14_muem4")]
-position = Vector2(585, -113)
+[node name="spawner" type="Node2D" parent="." unique_id=890856820]
+script = ExtResource("14_a8y0u")
 
-[node name="enemy_two" parent="." unique_id=2087492476 instance=ExtResource("15_dp3eg")]
-position = Vector2(79, -125)
+[node name="lPoint" type="Node2D" parent="spawner" unique_id=822893980]
+position = Vector2(69, -117)
 
-[node name="meteor" parent="." unique_id=1998448903 instance=ExtResource("16_0ld40")]
-position = Vector2(318, -246)
+[node name="rPoint" type="Node2D" parent="spawner" unique_id=1089034721]
+position = Vector2(635, -117)
 
-[node name="powerup" parent="." unique_id=612103915 instance=ExtResource("17_gqmmt")]
-position = Vector2(210, -151)
+[node name="Timer" type="Timer" parent="spawner" unique_id=1486021436]
+wait_time = 0.7
+autostart = true
 
 [connection signal="pressed" from="ui/CanvasLayer/startScreen/ButtonPlay/ButtonPlay" to="ui" method="_on_button_play_pressed"]
 [connection signal="timeout" from="ui/CanvasLayer/chooseScreen/ships/shipOne/Timer" to="ui/CanvasLayer/chooseScreen/ships/shipOne" method="_on_timer_timeout"]
@@ -532,3 +530,4 @@ position = Vector2(210, -151)
 [connection signal="pressed" from="ui/CanvasLayer/chooseScreen/ButtonShipThree/ButtonShipThree" to="ui" method="_on_button_ship_three_pressed"]
 [connection signal="pressed" from="ui/CanvasLayer/inGameScreen/ButtonMute/ButtonMute" to="ui" method="_on_button_mute_pressed"]
 [connection signal="pressed" from="ui/CanvasLayer/gameOverScreen/ButtonMenu/ButtonMenu" to="ui" method="_on_button_menu_pressed"]
+[connection signal="timeout" from="spawner/Timer" to="spawner" method="_on_timer_timeout"]

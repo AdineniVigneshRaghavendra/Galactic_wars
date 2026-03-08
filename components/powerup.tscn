@@ -139,10 +139,11 @@ _data = {
 &"idle": SubResource("Animation_4uriv")
 }
 
-[node name="powerup" type="CharacterBody2D" unique_id=591703112]
+[node name="powerup" type="CharacterBody2D" unique_id=591703112 groups=["powerUp"]]
 script = ExtResource("1_m0i0m")
+health = 1000
 speed = 400.0
-type = ""
+type = "powerup"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014400669]
 texture_filter = 1
