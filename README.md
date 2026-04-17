@@ -1,5 +1,8 @@
 🌌 Galactic Wars
 
+
+![Gameplay](Screenshot_20260417_184023_Chrome.jpg)
+
 A small space game I built because I’ve always been obsessed with space and spaceships.
 Honestly, this game is just about enjoying that vibe — flying around, shooting stuff, and surviving in space.
 
